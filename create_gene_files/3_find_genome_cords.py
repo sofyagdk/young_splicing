@@ -3,6 +3,7 @@ import sys
 sys.path.append('/home/sofya/main/Lab/introns/young_splicing/splib/')
 from maf_parser import iterator_over_maf_blocks
 
+
 gene_table = pd.read_csv('../../data/gene_files/gene_cords_table.csv', sep=' ', header=0)
 gene_table['kb_before_start'] = gene_table['start'] - 1000
 gene_table['kb_after_end'] = gene_table['end'] + 1000
@@ -14,15 +15,11 @@ chr_names = ['1', '2', '3', '4', '5', '6', '7', '8', '9',
 
 
 for chr_name in chr_names:
-    if chr_name != '3':
-        continue
     print(chr_name)
 
     chr_genes = gene_table[gene_table['chr'] == int(chr_name)].reset_index(drop=True)
 
-
     output_folder = f'../../data/gene_files/chr{chr_name}/'
-
 
     species_list = ['hg38', 'calJac3', 'otoGar3', 'rheMac8', 'micMur3']
     seqs_column = {sp: list() for sp in species_list}
