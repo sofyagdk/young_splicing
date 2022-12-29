@@ -18,6 +18,9 @@ with open(human_annotation, 'r') as fin:
     for region in iterator_over_genes_with_annotation(fin):
         gene = region[0]
 
+        if gene.seq_id != '3':
+            continue
+
         output_folder = f'../../data/gene_files/chr{gene.seq_id}/' if gene.seq_id in chr_names \
             else '../../data/gene_files/unplaced/'
 
