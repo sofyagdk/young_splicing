@@ -57,8 +57,6 @@ chr_names = ['1', '2', '3', '4', '5', '6', '7', '8', '9',
 
 for chr_name in chr_names:
     print(chr_name)
-    if chr_name != '3':
-        continue
 
     maf_human_cords: list[tuple[int, int]] = list()  # human_start, human_end
     mafblock_list: list[list[tp.Any]] = list()
