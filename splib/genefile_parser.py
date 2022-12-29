@@ -25,14 +25,13 @@ class GeneFile:
 
         for line in lines:
             if line[:2] == '$2':
-                print(block)
                 self.human_center_annot = list(iterator_over_genes_with_annotation(block))[0]
                 block = list()
             elif line[:2] == '$3':
                 self.maf_blocks = list(iterator_over_maf_blocks(block))
                 block = list()
             elif line[:2] == '$4':
-                for seq_id, info, seq in iterator_over_fasta(block, decode=False ):
+                for seq_id, info, seq in iterator_over_fasta(block, decode=False):
                     self.genome_seqs[seq_id] = [info, seq]
                 block = list()
             elif line[:2] == '>>' or line[:2] == '$5':
